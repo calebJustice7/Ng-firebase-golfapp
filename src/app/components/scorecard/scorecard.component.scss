@@ -1,0 +1,71 @@
+@mixin card-item {
+    background-color: rgba(0, 0, 0, 0.4);
+    color: white;
+    height: 35px;
+    font-size: 1.2em;
+    border: 1px solid white;
+    padding: 7px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+@mixin row {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.score-card-wrapper {
+    .title {
+        @include card-item;
+        width: 100px;
+    }
+    .spacer {
+        margin: 10px 0;
+    }
+    .holes-wrapper {
+        margin-top: 20px;
+        @include row;
+        .hole {
+            @include card-item;
+            width: 35px;
+        }
+    }
+    .par-wrapper {
+        @include row;
+        .par {
+            @include card-item;
+            width: 35px;
+        }
+    }
+    .yardage-wrapper {
+        @include row;
+        .yardage {
+            @include card-item;
+            width: 35px;
+        }
+    }
+    .handicap-wrapper {
+        @include row;
+        .handicap {
+            @include card-item;
+            width: 35px;
+        }
+    }
+
+    .players-wrapper {
+        margin-top: 100px;
+        .player-card {
+            @include row;
+            .name {
+                @include card-item;
+                width: 100px;
+            }
+            input {
+                @include card-item;
+                width: 35px;
+                text-align: center;
+            }
+        }
+    }
+}

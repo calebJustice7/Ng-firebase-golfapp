@@ -1,0 +1,38 @@
+.nav-bar-wrapper {
+    background-color: #424242;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 100px;
+    color: white;
+    box-shadow: 0px 1px 2px 0px rgba(0,0,0,0.75);
+
+
+    .left {
+        font-size: 1.45em;
+    }
+    .right {
+        width: 350px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        font-size: 1.1em;
+
+        .players-link {
+            padding: 20px 8px;
+        }
+
+        div {
+            width: 100%;
+            outline: None;
+            cursor: pointer;
+            padding: 20px 0px;
+            text-align: center;
+            font-size: .97em;
+        }
+    }
+}
+.active-link {
+    background-color: white;
+    color: black;
+}

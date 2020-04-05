@@ -1,0 +1,31 @@
+<div class="score-card-wrapper">
+    <div class="holes-wrapper">
+        <div class="title">Hole Num</div>
+        <div *ngFor="let hole of numHoles; let i = index" class="hole">{{ i + 1 }}</div>
+    </div>
+    <div class="spacer"></div>
+    <div class="par-wrapper">
+        <div class="title">Par</div>
+        <div class="par" *ngFor="let par of selectedCourse.holes">{{ par.teeBoxes[teeTypeIndex].par }}</div>
+    </div>
+    <div class="spacer"></div>
+    <div class="yardage-wrapper">
+        <div class="title">Yardage</div>
+        <div class="yardage" *ngFor="let yard of selectedCourse.holes">{{ yard.teeBoxes[teeTypeIndex].yards }}</div>
+    </div>
+    <div class="spacer"></div>
+    <div class="handicap-wrapper">
+        <div class="title">Handicap</div>
+        <div class="handicap" *ngFor="let handicap of selectedCourse.holes">{{ handicap.teeBoxes[teeTypeIndex].hcp }}</div>
+    </div>
+
+    <div class="players-wrapper">
+        <div class="player-card" *ngFor="let player of players; let i = index">
+            <div class="name">{{ player.firstName }}</div>
+            <input 
+                type="text" 
+                *ngFor="let score of player.scores; let j = index" 
+                (input)="updateScore(i, j, $event)"/>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,84 @@
+<mat-card class="existing-game-button" *ngIf="!gameLoaded">
+    <button (click)="existingGameRender()" mat-raised-button>Enter Existing Game</button>
+    <div>or</div>
+    <button (click)="newGameRender()" mat-raised-button>Create New Game</button>
+</mat-card>
+<mat-card *ngIf="boolNewGame && !gameLoaded">
+    <div class="title">
+        <h1>Create New Game</h1>
+    </div>
+    <div class="form-input-container">
+        <mat-form-field appearance="standard">
+            <mat-label>Game Name</mat-label>
+            <input [(ngModel)]="gameName" matInput placeholder="Game Name">
+        </mat-form-field>
+    </div>
+    <div class="spacer"></div>
+    <div class="button-wrapper">
+        <button (click)="newGame()" mat-raised-button>Submit</button>
+    </div>
+</mat-card>
+<mat-card *ngIf="boolNewGame == false && !gameLoaded">
+    <div class="title">
+        <h1>Join Existing Game</h1>
+    </div>
+    <div class="form-input-container">
+        <select [(ngModel)]="existingGameName">
+            <option [value]="game.gameName" *ngFor="let game of games">{{ game.gameName }}</option>
+        </select>
+    </div>
+    <div class="spacer"></div>
+    <div class="button-wrapper">
+        <button (click)="existingGame()" mat-raised-button>Submit</button>
+    </div>
+</mat-card>
+
+<mat-card *ngIf="gameLoaded">
+    <div class="title">
+        <h1>Current Players</h1>
+    </div>
+    <div class="form-input-container">
+        <div *ngFor="let player of players">
+            <div>{{ player.firstName }} {{ player.lastName }}</div>
+        </div>
+    </div>
+</mat-card>
+
+<mat-card *ngIf="gameLoaded">
+    <div class="title">
+        <h1>Enter Player Info</h1>
+    </div>
+    <form [formGroup]="form">
+        <div class="form-input-container">
+            <mat-form-field appearance="standard">
+                <mat-label>First Name</mat-label>
+                <input formControlName="firstName" matInput placeholder="First name">
+            </mat-form-field>
+        </div>
+        <div class="spacer"></div>
+        <div class="form-input-container">
+            <mat-form-field appearance="standard">
+                <mat-label>Last Name</mat-label>
+                <input formControlName="lastName" matInput placeholder="Last name">
+            </mat-form-field>
+        </div>
+        <div class="spacer"></div>
+        <div class="form-input-container">
+            <mat-form-field appearance="standard">
+                <mat-label>Nickname</mat-label>
+                <input formControlName="nickName" matInput placeholder="Nickname">
+            </mat-form-field>
+        </div>
+        <div class="spacer"></div>
+        <div class="form-input-container">
+            <mat-form-field appearance="standard">
+                <mat-label>Age</mat-label>
+                <input formControlName="age" matInput placeholder="Age">
+            </mat-form-field>
+        </div>
+        <div class="buttons-wrapper">
+            <button (click)="resetForm()" mat-raised-button>Clear</button>
+            <button (click)="saveUser()" mat-raised-button>Submit</button>
+        </div>
+    </form>
+</mat-card>
