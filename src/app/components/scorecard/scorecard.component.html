@@ -20,12 +20,16 @@
     </div>
 
     <div class="players-wrapper">
-        <div class="player-card" *ngFor="let player of players; let i = index">
+        <div class="player-card" *ngFor="let player of players; let a = index">
             <div class="name">{{ player.firstName }}</div>
             <input 
                 type="text" 
-                *ngFor="let score of player.scores; let j = index" 
-                (input)="updateScore(i, j, $event)"/>
+                *ngFor="let score of numHoles; let b = index" 
+                (input)="updateScore(a, b, $event)"
+                [class]="classAssign(a, b)"
+            />
         </div>
     </div>
 </div>
+
+<!-- [(ngModel)]="players[a].scores[b]" -->

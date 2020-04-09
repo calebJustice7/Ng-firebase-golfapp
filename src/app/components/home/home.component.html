@@ -1,32 +1,37 @@
 <div *ngIf="loaded">
-    <div class="active-course-wrapper" *ngIf="courseSelected">
+    <div class="active-course-wrapper" *ngIf="courseService.selected && !playersService.selectedTeeType">
         <mat-card>
             <mat-card-subtitle>
                 <button (click)="deSelectCourse()" mat-stroked-button color="accent">Deselect</button>
-                <div>{{ selectedCourse.name }}</div>
-                <select [(ngModel)]="teeType" (change)="handleChange()">
-                    <option value="" disabled selected hidden>Choose a Tee Type</option>
+                <div *ngIf="selectedCourse">{{ selectedCourse.name }}</div>
+                <select *ngIf="selectedCourse" [(ngModel)]="teeType">
                     <option [value]="teeType.teeType" *ngFor="let teeType of selectedCourse.holes[0].teeBoxes">{{ teeType.teeType }}</option>
                 </select>
+                <button 
+                    class="select-teetype" 
+                    (click)="handleChange()" 
+                    mat-stroked-button color="primary"
+                    *ngIf="teeType != null">Select Tee Type</button>
             </mat-card-subtitle>
         </mat-card>
     </div>
 </div>
 
-<div *ngIf="courses?.length > 0; else loading" class="card-wrapper">
+<div *ngIf="courses.length > 0; else loading" class="card-wrapper">
     <mat-card *ngFor="let course of courses">
         <mat-card-title>
             {{ course.name }}
         </mat-card-title>
         <img style="height: 300px;" mat-card-image [src]="course.image" />
         <mat-card-actions>
-            <button (click)="selectCourse(course)" mat-stroked-button style="background-color: #34C659; color: white;">Select Course</button>
+            <button *ngIf="!courseService.selected" (click)="selectCourse(course)" mat-stroked-button style="background-color: #34C659; color: white;">Select Course</button>
         </mat-card-actions>
     </mat-card>
 </div>
-<mat-card class="footer" *ngIf="loaded">
-    <mat-card-title>{{ courseSelected == true ? selectedCourse.name : 'No Course Selected' }}</mat-card-title>
-</mat-card>
+
+<ng-template #loading>
+    Loading...
+</ng-template>
 
 <ng-template #loading>
     Loading...

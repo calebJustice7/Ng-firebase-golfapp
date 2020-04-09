@@ -13,7 +13,7 @@ export class ScorecardComponent implements OnInit {
   public numHoles: number[] = Array(18).fill(0);
   public selectedCourse: any;
   public teeTypeIndex: number;
-  public players: any[];
+  public players: any[] = [];
 
   constructor(
     private playersService: PlayersService,
@@ -30,8 +30,18 @@ export class ScorecardComponent implements OnInit {
     this.players = this.playersService.players;
   }
   updateScore(player, hole, event) {
-    let updatePlayer = this.players[player];
-    updatePlayer.scores[hole] = event.target.value;
-    this.players[player] = updatePlayer;
+    let val = event.target.value;
+    if(isNaN(Number(val)) || val == ' ') {
+      event.target.value = '';
+      return;
+    }
+    let activePlayer = this.players[player];
+    activePlayer.scores[hole] = Number(val);
+    this.players[player] = activePlayer;
+  }
+
+  classAssign(player, hole): string {
+    let score = this.players[player].scores[hole];
+    return Number(score) ? 'no-err' : 'err';
   }
 }

@@ -41,6 +41,13 @@ mat-card-subtitle {
         background-color: #FF3A30;
         border: none;
     }
+    .select-teetype {
+        background-color: rgb(48, 209, 88);
+        color: white;
+        display: flex;
+        position: absolute;
+        right: -10px;
+    }
     div {
         font-size: 1.3em;
         margin-right: 40px;

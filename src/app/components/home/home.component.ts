@@ -10,9 +10,9 @@ import { PlayersService } from 'src/app/services/players.service';
 })
 export class HomeComponent implements OnInit {
 
-  public courses: Course[];
+  public courses: Course[] = [];
   public loaded: boolean = false;
-  public courseSelected: boolean = false;
+  public courseSelected: boolean;
   public selectedCourse: any;
   public teeType: any = null;
 

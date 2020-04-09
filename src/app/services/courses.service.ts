@@ -10,18 +10,23 @@ export class CoursesService {
 
   public URL: string = 'https://golf-courses-api.herokuapp.com/courses';
   public selectedCourseData: any;
+  public selected: boolean = false;
 
   getCourses() {
-    return this.http.get<any>(this.URL);
+    let call = this.http.get<any>(this.URL);
+    return call;
   }
   getSelectedCourse(courseId) {
+    this.selected = true;
     return this.http.get<any>(`${this.URL}/${courseId}`);
   }
   setSelectedCourse(course) {
     if(course == null) {
       this.selectedCourseData = undefined;
+      this.selected = false;
     } else {
       this.selectedCourseData = course;
+      this.selected = true;
     }
   }
 

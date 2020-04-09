@@ -11,9 +11,10 @@ export class PlayersService {
   public players: any[] = [];
   public teeType: any;
   public gameName: any = undefined;
+  public selectedTeeType: boolean = false;
 
   setGameName(name) {this.gameName = name;}
-  setTeeType(type) {this.teeType = type;}
+  setTeeType(type) {this.teeType = type; this.selectedTeeType = true;}
   getGames() {return this.db.collection('games').valueChanges();}
 
   newGame(name){
@@ -42,8 +43,5 @@ export class PlayersService {
         scores: this.players[this.players.length -1].scores
       });
     }
-    setTimeout(() => {
-      console.log(this.players);
-    }, 2000)
   }
 }

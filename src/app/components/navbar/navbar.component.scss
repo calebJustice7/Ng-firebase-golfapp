@@ -9,7 +9,16 @@
 
 
     .left {
-        font-size: 1.45em;
+        display: flex;
+        align-items: center;
+        div:first-child {
+            font-size: 1.45em;
+            padding: 20px 8px;
+            margin-right: 15px;
+        }
+        div:last-child {
+            margin-left: 15px;
+        }
     }
     .right {
         width: 350px;
