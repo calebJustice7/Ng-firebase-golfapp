@@ -35,7 +35,7 @@ export class PlayersService {
       this.players.push(new Player(
         info.firstName, info.lastName, info.nickName, info.age
       ));
-      this.db.collection('games').doc(this.gameName).collection('users').add({
+      this.db.collection('games').doc(this.gameName).collection('users').doc(info.firstName).set({
         firstName: info.firstName,
         lastName: info.lastName,
         nickName: info.nickName,

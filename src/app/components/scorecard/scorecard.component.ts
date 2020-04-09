@@ -38,6 +38,7 @@ export class ScorecardComponent implements OnInit {
     let activePlayer = this.players[player];
     activePlayer.scores[hole] = Number(val);
     this.players[player] = activePlayer;
+    this.scoringService.saveScores(player, hole);
   }
 
   classAssign(player, hole): string {
