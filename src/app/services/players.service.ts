@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Player } from '../classes/player';
 import { AngularFirestore } from '@angular/fire/firestore';
+import { filter } from 'minimatch';
 
 @Injectable({
   providedIn: 'root'
@@ -12,14 +13,19 @@ export class PlayersService {
   public teeType: any;
   public gameName: any = undefined;
   public selectedTeeType: boolean = false;
+  public games: any = [];
 
   setGameName(name) {this.gameName = name;}
   setTeeType(type) {this.teeType = type; this.selectedTeeType = true;}
-  getGames() {return this.db.collection('games').valueChanges();}
 
-  newGame(name){
+  getGames(course) {
+    return this.db.collection('games', ref => ref.where('course', '==', course)).valueChanges();
+  }
+
+
+  newGame(name, courseName){
     this.gameName = name; 
-    this.db.collection('games').doc(name).set({gameName: name});
+    this.db.collection('games').doc(name).set({gameName: name, course: courseName});
   }
   getPlayers(){
     if(this.gameName != undefined) {

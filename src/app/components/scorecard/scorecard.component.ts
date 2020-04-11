@@ -31,14 +31,15 @@ export class ScorecardComponent implements OnInit {
   }
   updateScore(player, hole, event) {
     let val = event.target.value;
-    if(isNaN(Number(val)) || val == ' ') {
+    if(isNaN(val) || val == ' ') {
       event.target.value = '';
       return;
     }
     let activePlayer = this.players[player];
     activePlayer.scores[hole] = Number(val);
     this.players[player] = activePlayer;
-    this.scoringService.saveScores(player, hole);
+    console.log(this.players[player].scores);
+    this.scoringService.saveScores(activePlayer);
   }
 
   classAssign(player, hole): string {

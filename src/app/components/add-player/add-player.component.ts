@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { PlayersService } from 'src/app/services/players.service';
 import { ScoringService } from 'src/app/services/scoring.service';
+import { CoursesService } from 'src/app/services/courses.service';
 
 @Component({
   selector: 'app-add-player',
@@ -20,13 +21,16 @@ export class AddPlayerComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private playerService: PlayersService,
+    private courseService: CoursesService
   ) { 
     this.gameLoaded = this.playerService.gameName == undefined ? false : true;
     if(this.playerService.gameName != undefined) {this.getPlayers()}
   }
   ngOnInit(): void {
     this.form = this.fb.group({firstName: [''],lastName: [''],nickName: [''],age: ['']})
-    this.playerService.getGames().subscribe(games => {this.games = games;})
+    this.playerService.getGames(this.courseService.selectedCourseData.name).subscribe(games => {
+      this.games = games;
+    })
   }
   existingGame(){
     this.playerService.setGameName(this.existingGameName);
@@ -41,7 +45,7 @@ export class AddPlayerComponent implements OnInit {
     this.form.reset();
   }
   newGame(){ 
-    this.playerService.newGame(this.gameName);
+    this.playerService.newGame(this.gameName, this.courseService.selectedCourseData.name);
     this.gameName = '';
     this.gameLoaded = true;
     this.getPlayers();

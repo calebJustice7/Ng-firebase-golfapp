@@ -12,12 +12,10 @@ export class ScoringService {
     private db: AngularFirestore
   ) {}
 
-  saveScores(playerIdx, holeIdx) {
-    let players = this.playersService.players;
-    let selectedPlayer = players[playerIdx];
+  saveScores(player) {
     let gameName = this.playersService.gameName;
     this.db.collection('games').doc(gameName)
-      .collection('users').doc(selectedPlayer.firstName)
-      .update({scores:selectedPlayer.scores});
+      .collection('users').doc(player.firstName)
+      .update({scores: player.scores});
   }
 }

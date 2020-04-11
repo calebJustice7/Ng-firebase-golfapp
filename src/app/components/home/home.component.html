@@ -5,6 +5,7 @@
                 <button (click)="deSelectCourse()" mat-stroked-button color="accent">Deselect</button>
                 <div *ngIf="selectedCourse">{{ selectedCourse.name }}</div>
                 <select *ngIf="selectedCourse" [(ngModel)]="teeType">
+                    <option value="empty" selected>Choose a tee type</option>
                     <option [value]="teeType.teeType" *ngFor="let teeType of selectedCourse.holes[0].teeBoxes">{{ teeType.teeType }}</option>
                 </select>
                 <button 
@@ -16,6 +17,10 @@
         </mat-card>
     </div>
 </div>
+
+<mat-card class="message" *ngIf="!courseService.selected">
+    <mat-card-title>If trying to load previous game, Select the right course</mat-card-title>
+</mat-card>
 
 <div *ngIf="courses.length > 0; else loading" class="card-wrapper">
     <mat-card *ngFor="let course of courses">
@@ -29,9 +34,6 @@
     </mat-card>
 </div>
 
-<ng-template #loading>
-    Loading...
-</ng-template>
 
 <ng-template #loading>
     Loading...

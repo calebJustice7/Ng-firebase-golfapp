@@ -28,7 +28,9 @@ export class HomeComponent implements OnInit {
     })
   }
   handleChange() {
-    this.playersService.setTeeType(this.teeType);
+    if(this.teeType != "empty"){
+      this.playersService.setTeeType(this.teeType);
+    }
   }
   selectCourse(course) {
     this.courseSelected = false;

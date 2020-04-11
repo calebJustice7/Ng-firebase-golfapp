@@ -25,7 +25,7 @@
             <input 
                 type="text" 
                 *ngFor="let score of numHoles; let b = index" 
-                (input)="updateScore(a, b, $event)"
+                (change)="updateScore(a, b, $event)"
                 value='{{ players[a].scores[b] }}'
                 [class]="classAssign(a, b)"
             />
