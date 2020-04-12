@@ -1,5 +1,7 @@
 .main-container {
     background-image: url('../assets/bg-image.jpg');
     background-size: cover;
+    background-repeat: repeat-y;
     min-height: 100vh;
+    max-height: 200vh
 }

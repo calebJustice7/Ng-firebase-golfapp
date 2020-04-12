@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import { Player } from '../classes/player';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { filter } from 'minimatch';
+import { Game } from '../models/game';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -18,21 +20,20 @@ export class PlayersService {
   setGameName(name) {this.gameName = name;}
   setTeeType(type) {this.teeType = type; this.selectedTeeType = true;}
 
-  getGames(course) {
-    return this.db.collection('games', ref => ref.where('course', '==', course)).valueChanges();
+  getGames(course: string) {
+    return this.db.collection<Game>('games', ref => ref.where('course', '==', course)).valueChanges();
   }
-
 
   newGame(name, courseName){
     this.gameName = name; 
-    this.db.collection('games').doc(name).set({gameName: name, course: courseName});
+    this.db.collection<Game>('games').doc(name).set({gameName: name, course: courseName});
   }
   getPlayers(){
     if(this.gameName != undefined) {
-      this.db.collection('games').doc(this.gameName).collection('users').valueChanges().subscribe(players => {
+      this.db.collection<Game>('games').doc(this.gameName).collection<Player>('users').valueChanges().subscribe(players => {
         this.players = players;
       })
-      return this.db.collection('games').doc(this.gameName).collection('users').valueChanges();
+      return this.db.collection<Game>('games').doc(this.gameName).collection<Player>('users').valueChanges();
     }
   }
   addPlayer(info) {

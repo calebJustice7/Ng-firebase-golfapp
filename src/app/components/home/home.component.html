@@ -1,9 +1,9 @@
 <div *ngIf="loaded">
-    <div class="active-course-wrapper" *ngIf="courseService.selected && !playersService.selectedTeeType">
+    <div class="active-course-wrapper" @insertRemove *ngIf="courseService.selected && !playersService.selectedTeeType">
         <mat-card>
             <mat-card-subtitle>
                 <button (click)="deSelectCourse()" mat-stroked-button color="accent">Deselect</button>
-                <div *ngIf="selectedCourse">{{ selectedCourse.name }}</div>
+                <div @insertRemove *ngIf="selectedCourse">{{ selectedCourse.name }}</div>
                 <select *ngIf="selectedCourse" [(ngModel)]="teeType">
                     <option value="empty" selected>Choose a tee type</option>
                     <option [value]="teeType.teeType" *ngFor="let teeType of selectedCourse.holes[0].teeBoxes">{{ teeType.teeType }}</option>
@@ -12,29 +12,30 @@
                     class="select-teetype" 
                     (click)="handleChange()" 
                     mat-stroked-button color="primary"
+                    @insertRemove
                     *ngIf="teeType != null">Select Tee Type</button>
             </mat-card-subtitle>
         </mat-card>
     </div>
 </div>
 
-<mat-card class="message" *ngIf="!courseService.selected">
+<mat-card class="message" @insertRemove *ngIf="!courseService.selected">
     <mat-card-title>If trying to load previous game, Select the right course</mat-card-title>
 </mat-card>
 
-<div *ngIf="courses.length > 0; else loading" class="card-wrapper">
+<div @insertRemove *ngIf="courses.length > 0; else loading" class="card-wrapper">
     <mat-card *ngFor="let course of courses">
         <mat-card-title>
             {{ course.name }}
         </mat-card-title>
         <img style="height: 300px;" mat-card-image [src]="course.image" />
         <mat-card-actions>
-            <button *ngIf="!courseService.selected" (click)="selectCourse(course)" mat-stroked-button style="background-color: #34C659; color: white;">Select Course</button>
+            <button @insertRemove *ngIf="!courseService.selected" (click)="selectCourse(course)" mat-stroked-button style="background-color: #34C659; color: white;">Select Course</button>
         </mat-card-actions>
     </mat-card>
 </div>
 
 
 <ng-template #loading>
-    Loading...
+    <div class="loading"></div>
 </ng-template>

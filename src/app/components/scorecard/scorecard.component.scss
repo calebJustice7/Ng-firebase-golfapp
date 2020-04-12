@@ -76,3 +76,67 @@
 .err {
     background-color: rgba(255, 69, 58, 0.5) !important
 }
+.button-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding: 20px 20px;
+    width: 45%;
+    margin: 40px auto;
+
+    button:first-child {
+        background-color: rgba(255, 69, 58, 1);
+    }
+    button:last-child {
+        background-color: rgba(48, 209, 88, 1);
+    }
+}
+
+.modal {
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.85);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+
+    .modal-content {
+        padding: 25px;
+        width: 42%;
+        text-align: center;
+        margin: 0 auto;
+        margin-top: 20%;
+
+        mat-card-title{
+            margin-top: 20px;
+        }
+
+        .buttons-wrapper {
+            margin-top: 50px;
+            margin-bottom: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+
+            button:first-child {
+                background-color: rgba(48, 209, 88, 1);
+            }
+            button:last-child {
+                background-color: rgba(255, 69, 58, 1);
+            }
+        }
+    }
+}
+.score-message {
+    color: white;
+    font-size: 1.43em;
+    padding: 30px;
+    font-weight: 600;
+    position: absolute;
+    width: 30%;
+    margin-left: auto;
+    margin-right: auto;
+    top: 460px;
+    left: 0;
+    right: 0;
+}

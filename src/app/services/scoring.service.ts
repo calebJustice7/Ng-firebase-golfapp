@@ -18,4 +18,11 @@ export class ScoringService {
       .collection('users').doc(player.firstName)
       .update({scores: player.scores});
   }
+  resetScores() {
+    this.playersService.players.forEach(player => {
+      this.db.collection('games').doc(this.playersService.gameName)
+        .collection('users').doc(player.firstName)
+        .update({scores: Array(18).fill(0)})
+    })
+  }
 }

@@ -1,3 +1,8 @@
+<mat-card class="button-wrapper">
+    <button mat-raised-button (click)="toggleModal()">Clear Card</button>
+    <button mat-raised-button>Finish Game</button>
+</mat-card>
+
 <div class="score-card-wrapper">
     <div class="holes-wrapper">
         <div class="title">Hole Num</div>
@@ -33,4 +38,16 @@
     </div>
 </div>
 
-<!-- [(ngModel)]="players[a].scores[b]" -->
+<mat-card @slideInOut class="score-message" *ngIf="messageShow">
+    {{ message }}
+</mat-card>
+
+<div class="modal" *ngIf="modalShow" @insertRemove>
+    <mat-card class="modal-content">
+        <mat-card-title>Are You Sure You Wish To Clear All Scores?</mat-card-title>
+        <div class="buttons-wrapper">
+            <button mat-raised-button (click)="clearScores()">Yes</button>
+            <button mat-raised-button (click)="toggleModal()">Cancel</button>
+        </div>
+    </mat-card>
+</div>

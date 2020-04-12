@@ -44,7 +44,7 @@
     </div>
 </mat-card>
 
-<mat-card *ngIf="gameLoaded">
+<mat-card class="form-mat-card" *ngIf="gameLoaded">
     <div class="title">
         <h1>Enter Player Info</h1>
     </div>
@@ -77,8 +77,8 @@
             </mat-form-field>
         </div>
         <div class="buttons-wrapper">
-            <button (click)="resetForm()" mat-raised-button>Clear</button>
             <button (click)="saveUser()" mat-raised-button>Submit</button>
+            <button (click)="resetForm()" mat-raised-button>Clear</button>
         </div>
     </form>
 </mat-card>

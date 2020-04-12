@@ -15,6 +15,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './modules/material/material.module';
 import { AddPlayerComponent } from './components/add-player/add-player.component';
 import { environment } from 'src/environments/environment';
+import { CourseSelectedGuard } from './guards/course-selected.guard';
+import { DuplicateNamesPipe } from './pipes/duplicate-names.pipe';
 
 @NgModule({
   declarations: [
@@ -22,7 +24,7 @@ import { environment } from 'src/environments/environment';
     NavbarComponent,
     HomeComponent,
     ScorecardComponent, 
-    AddPlayerComponent
+    AddPlayerComponent, DuplicateNamesPipe
   ],
   imports: [
     BrowserModule,
@@ -35,7 +37,7 @@ import { environment } from 'src/environments/environment';
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule
   ],
-  providers: [],
+  providers: [CourseSelectedGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

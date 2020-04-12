@@ -54,7 +54,7 @@ mat-card-subtitle {
     }
 }
 .message {
-    color: #FF3A30;
+    color: rgb(48, 209, 88);
     position: absolute;
     width: 80%;
     margin-left: auto;
@@ -63,3 +63,17 @@ mat-card-subtitle {
     left: 0;
     right: 0;
 }
+.loading {
+    border: 8px solid;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    border-color: orange transparent transparent;
+    animation: spin 1s linear infinite;
+    margin: auto;
+    margin-top: 16%;
+}
+
+@keyframes spin {
+    100% {transform: rotate(360deg); filter:hue-rotate(360deg)}
+} 
