@@ -17,6 +17,7 @@ import { AddPlayerComponent } from './components/add-player/add-player.component
 import { environment } from 'src/environments/environment';
 import { CourseSelectedGuard } from './guards/course-selected.guard';
 import { DuplicateNamesPipe } from './pipes/duplicate-names.pipe';
+import { FinishGameComponent } from './components/finish-game/finish-game.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,7 @@ import { DuplicateNamesPipe } from './pipes/duplicate-names.pipe';
     NavbarComponent,
     HomeComponent,
     ScorecardComponent, 
-    AddPlayerComponent, DuplicateNamesPipe
+    AddPlayerComponent, DuplicateNamesPipe, FinishGameComponent
   ],
   imports: [
     BrowserModule,

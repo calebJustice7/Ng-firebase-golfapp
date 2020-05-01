@@ -32,7 +32,7 @@ import { Router } from '@angular/router';
 })
 export class ScorecardComponent implements OnInit {
 
-  public numHoles: number[] = Array(18).fill(0);
+  public numHoles: any = Array(18).fill(0);
   public selectedCourse: any;
   public teeTypeIndex: number;
   public players: any[] = [];
