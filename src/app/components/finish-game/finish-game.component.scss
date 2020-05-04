@@ -1,0 +1,18 @@
+.finish-game-wrapper {
+
+    .score-wrapper {
+        
+        width: 70%;
+        margin: 0 auto;
+        margin-top: 100px;
+
+        .score {
+            color: white;
+
+            span {
+                font-size: 1.6em;
+                margin: 10px 20px;
+            }
+        }
+    }
+}

@@ -1,3 +1,8 @@
 <div class="finish-game-wrapper">
-    
+    <mat-card class="score-wrapper" *ngFor="let player of players; let i = index">
+        <div class="score">
+            <span>{{ player.firstName }}:</span>
+            <span>{{ scores[i] }}</span>
+        </div>
+    </mat-card>
 </div>

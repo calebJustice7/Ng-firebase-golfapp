@@ -12,7 +12,7 @@ const routes: Routes = [
   { path: 'course-select', component: HomeComponent },
   { path: 'scorecard', component: ScorecardComponent, canActivate: [CourseSelectedGuard] },
   { path: 'add-player', component: AddPlayerComponent },
-  { path: 'finish-game', component: FinishGameComponent },
+  { path: 'finish-game', component: FinishGameComponent, canActivate: [CourseSelectedGuard] },
   { path: '**', redirectTo: 'course-select' }
 ];
 
